@@ -108,4 +108,25 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+	describe('New Feed Selection', function() {
+		let entriesStart,
+			entriesEnd;
+		beforeEach(function(done) {
+			$('.feed').empty();
+			loadFeed(0, function() {
+				entriesStart = $('.feed').find(allFeeds.url);
+				done();
+			});
+			
+			loadFeed(1, function() {
+				entriesEnd = $('.feed').find(allFeeds.url);
+				done();
+			});
+		});
+		
+		it('New feed is different than Old feed', function() {
+			expect(entriesStart).not.toBe(entriesEnd);
+		});
+		
+	});
 }());
