@@ -125,8 +125,9 @@ $(function() {
 			});
 		});
 		
-		it('New feed is different than Old feed', function() {
+		it('New feed is different than Old feed', function(done) {
 			expect(entriesStart).not.toBe(entriesEnd);
+			done();
 		});
 		
 	});
